@@ -1,0 +1,64 @@
+---
+// @/layouts/MainSection.astro
+---
+
+<section>
+  <slot />
+  <slot />
+</section>
+
+<style>
+  section {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 94%;
+		height: 100vh;
+		background-color: var(--main-section-bg);
+		border: 1px solid rgba(0,0,0,0.3);
+		border-radius: 0px 38px 38px 0px;
+		box-shadow:  var(--main-section-shadow);
+		overflow: hidden;
+	}
+  section::before,
+	section::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 20px;
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	section::before {
+		top: 0;
+		box-shadow: inset 0 10px 15px -5px rgba(0, 0, 0, 0.35);
+	}
+	section::after {
+		bottom: 0;
+		box-shadow: inset 0 -10px 15px -5px rgba(0, 0, 0, 0.35);
+	}
+  @media (max-width: 768px) {
+		section{
+			width: 100vw;
+			height: 90%;
+			margin-block-end: 50px;
+			border-radius: 0px 0px 30px 30px;
+		}
+		section::before {
+      top: 0;
+      box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0);
+	  }
+    section::after {
+		bottom: 0;
+		box-shadow: inset 0 -10px 12px -8px rgba(0, 0, 0, 0.20);
+	}
+  }
+  @media (orientation: landscape) and (max-height: 600px) {
+		section{
+			height: fit-content;
+		}
+	}
+</style>

@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@0,1..1000;1,1..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+
+
+/* 🌞 Modo Claro */
+:root {
+
+  /* 🎨 Colores Base */
+
+  /* colors */
+  --black: #242124;
+  --white: #e5e5e5;
+  --darker: #1f2029;
+  --dark: #312f33;
+  --middle: #b4bcb7;
+  --light: #d5d4cc;
+  --lighter: #d9dee1;
+  
+  /* emphasis colors */
+  --light-emphasis-color: hsl(from var(--lighter) h calc(s + 85) calc(l - 45));
+  --dark-emphasis-color: hsl(from var(--dark) h calc(s + 100) calc(l + 50));
+  
+  /* shadows */
+  --light-shadow: 20px 20px 60px #b5b4ad, -20px -20px 60px #f5f4eb;
+  --lighter-shadow:  20px 20px 60px #b8bdbf, -20px -20px 60px #faffff;
+  --dark-shadow: 8px 8px 16px #2d2b2e,
+  -8px -8px 16px #353338;
+  --darker-shadow: 8px 8px 16px #1c1d25, -8px -8px 16px #22232d;
+
+/* Colores aplicados */
+--font-color: var(--black);
+--main-section-bg: var(--lighter);
+--main-section-shadow: var(--light-shadow);
+--main-layout-bg: var(--light);
+--carousel-card-shadow: var(--lighter-shadow);
+--emphasis-color: var(--light-emphasis-color);
+
+  /* 🧬 Tipografía */
+  /* Header */
+  /* h1 */
+  --font-heading: "Caveat", cursive;/* 
+  --font-heading__optical-sizing: auto;
+  --font-heading__weight: 400;
+  --font-heading__style: normal; */
+  
+  --font-body: "Ysabeau Infant", sans-serif;
+  --font-size-base: 1.6rem;
+
+  --font-dialog-balloon: "Patrick Hand SC", cursive;
+
+  /* 🔲 Radios */
+  --radius: 12px;
+
+  /* 🧭 Otros tokens expandibles */
+  --border-color: #ddd;
+  --transition: 0.3s ease;
+
+  /* ⚡ Colores Cyberpunk */
+  /* CSS HSL */
+/* --dun: hsla(33, 30%, 76%, 1);
+--platinum2: hsla(240, 2%, 88%, 1);
+--black: hsla(0, 0%, 0%, 1);
+--robin-egg-blue: hsla(181, 51%, 52%, 1);
+--raisin-black: hsla(300, 2%, 16%, 1);
+--rose: hsla(335, 85%, 55%, 1);
+--french-gray: hsla(240, 2%, 76%, 1); */
+
+/* Gradient */
+/* CSS HSL  */
+/* --amaranth-purple: hsla(337, 91%, 38%, 1);
+--murrey: hsla(332, 72%, 36%, 1);
+--byzantium: hsla(324, 52%, 35%, 1);
+--finn: hsla(302, 31%, 34%, 1);
+--ultra-violet: hsla(259, 24%, 40%, 1);
+--yinmn-blue: hsla(218, 33%, 40%, 1);
+--ucla-blue: hsla(202, 53%, 38%, 1);
+--cerulean: hsla(194, 75%, 36%, 1);
+--blue-munsell: hsla(190, 100%, 34%, 1); */
+
+  /* 🧱 Fondo de tarjetas y elementos */
+  /* --card-bg: #ffffff; */
+}
+
+/* 🌚 Modo Oscuro */
+:root.dark {
+
+  /* Colores aplicados */
+  --font-color: var(--white);
+  --main-section-bg: var(--dark);
+  --main-section-shadow: var(--darker-shadow);
+  --main-layout-bg: var(--darker);
+  --carousel-card-shadow: var(--dark-shadow);
+  --emphasis-color: var(--dark-emphasis-color);
+
+}
+
+/* 
+.color1 {color: #d5d4cc;}
+.color2 {color: #d9dee1;}
+.color3 {color: #343647;}
+.color4 {color: #777479;}
+.color5 {color: #b4bcb7;}
+ */

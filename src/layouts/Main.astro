@@ -1,0 +1,65 @@
+---
+// @/layouts/Main.astro
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ruizam.dev</title>
+  <!-- SEO Básico -->
+  <meta name="description" content="Portafolio de Armando Ruiz, Frontend Developer. Proyectos, blog y contacto.">
+  <meta name="keywords" content="Armando Ruiz, ruizamdev, frontend, developer, portafolio, JavaScript, TypeScript, web components, Astro, blog, blogging, portfolio, proyectos, contacto">
+  <meta name="author" content="Armando Ruiz">
+  <meta name="robots" content="index, follow">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ruizamdev">
+  <meta property="og:description" content="Portafolio de Armando Ruiz, Frontend Developer.">
+  <meta property="og:image" content="/images/og-image.png">
+  <meta property="og:url" content="https://ruizam.dev/">
+  <meta property="og:site_name" content="ruizamdev">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ruizamdev">
+  <meta name="twitter:description" content="Portafolio de Armando Ruiz, Frontend Developer.">
+  <meta name="twitter:image" content="/images/og-image.png">
+  <meta name="twitter:site" content="@ruizamdev">
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.svg" type="image/x-icon">
+  <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
+  <!-- Manifest PWA -->
+  <!-- <link rel="manifest" href="/site.webmanifest"> -->
+  <!-- Theme color -->
+  <!-- <meta name="theme-color" content="#18181b"> -->
+  <!-- Canonical -->
+  <!-- <link rel="canonical" href="https://ruizam.dev/"> -->
+</head>
+<body>
+  <main>
+    <slot />
+  </main>
+</body>
+</html>
+
+<style>
+  main {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		width: 100vw;
+		height: 100vh;
+		background-color: var(--main-layout-bg);
+	}
+  @media (max-width: 768px) {
+		main {
+			flex-direction: column;
+		}
+	}
+  @media (orientation: landscape) and (max-height: 600px) {
+		main {
+			height: fit-content;
+		}
+	}
+</style>
