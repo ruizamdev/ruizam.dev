@@ -168,9 +168,24 @@ export class WebsiteHeader extends HTMLElement {
       .website-header__avatar:hover {
           transform: scale(1.1) rotate(360deg)
         }
-        .inactive {
-          display: none;
-        }
+      .inactive {
+        display: none;
+      }
+      .avatar-transition {
+        width: 10%;
+      }
+      .wh-transition {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+      .fade-out {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+      } 
       @hover (hover: hover) {
         
       }
@@ -179,15 +194,10 @@ export class WebsiteHeader extends HTMLElement {
 
   private attachEvents(): void {
 
-    console.group('avatar dialog functions')
-
     const avatar = this.shadow?.querySelector('.website-header__avatar');
-    console.log(avatar)
     const dialog = this.shadow?.querySelector('.avatar__dialog-wrapper');
-    console.log(dialog)
     if (!avatar || !dialog) return;
     let timeoutId: number | null = null;
-    console.log(timeoutId)
 
     const showDialog = () => {
       if (timeoutId) {
@@ -200,7 +210,7 @@ export class WebsiteHeader extends HTMLElement {
       timeoutId = window.setTimeout(() => {
         dialog.classList.remove('visible');
         timeoutId = null;
-      }, 3000)
+      }, 3000);
     };
 
     avatar.addEventListener('click', () => {
@@ -208,7 +218,7 @@ export class WebsiteHeader extends HTMLElement {
     })
 
     setTimeout(() => {
-      showDialog()
+      showDialog();
     }, 3000);
   };
   
