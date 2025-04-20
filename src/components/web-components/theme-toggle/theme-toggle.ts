@@ -43,7 +43,52 @@ export class ThemeToggle extends HTMLElement {
   }
 
   private getStyles(): string {
-    return `/* tus estilos originales aquí, listos para modularizar luego */`;
+    return `
+      :host {
+        position: absolute;
+        top: 40px;
+        right: 40.5px;
+        display: inline-block;
+        z-index: 2000;
+      }
+
+      .theme-icon-container {
+        background: transparent;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 50%;
+      }
+      
+      .lucide {
+        width: 32px;
+        height: 32px;
+        transition: transform 0.3s ease;
+        color: var(--font-color);
+      }
+
+      .icon.fade-out {
+        opacity: 0;
+      }
+
+      :host(.has-hover) .theme-icon-container:hover .lucide {
+        transform: scale(1.2) rotate(-130deg);
+        stroke: var(--emphasis-color)
+      }
+      @media (max-width: 768px) {
+        :host {
+          top: 20px;
+          right: 20px;
+        }
+      }
+      @media (max-width: 480px) {
+        :host {
+          top: 17px;
+          right: 17px;
+        }
+      }
+    `;
   }
 
   private checkHover(): void {

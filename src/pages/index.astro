@@ -3,15 +3,20 @@
 import Main from '@/layouts/Main.astro';
 import Section from '@/layouts/Section.astro';
 import Aside from '@/layouts/Aside.astro';
-import RuizamHeader from '@/components/wrappers/RuizamHeader.astro';
+import WebsiteHeader from '@/components/wrappers/WebsiteHeader.astro';
 import BlogCarousel from '@/components/wrappers/BlogCarousel.astro';
+import WebsiteNavbar from '@/components/wrappers/WebsiteNavbar.astro';
+import ThemeToggle from '@/components/wrappers/ThemeToggle.astro';
 import '@styles/global.css';
 ---
 
 <Main>
-  <Section>
-    <RuizamHeader />
-    <BlogCarousel />
+  <Section slot="section">
+    <WebsiteHeader slot="websiteHeader"/>
+    <BlogCarousel slot="blogCarousel" />
   </Section>
-  <Aside />
+  <Aside slot="aside">
+    <ThemeToggle slot="theme-toggle" />
+    <WebsiteNavbar slot="website-navbar" />
+  </Aside>
 </Main>

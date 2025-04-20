@@ -1,0 +1,25 @@
+---
+
+// @/components/wrappers/RuizamHeader.astro
+
+// Atributos del componente
+// the-avatar='<svg>...</svg>'
+// comic-dialog-text="¡Hola! Bienvenido a mi sitio"
+// header-title="Armando Ruiz"
+// header-subtitle="Frontend Developer"
+const theAvatar = "/public/images/ruizam-avatar.svg";
+const comicDialogText = "¡Hola! Bienvenido a mi sitio web!";
+const headerTitle = "Armando Ruiz";
+const headerSubtitle = "Frontend Developer";
+---
+
+<website-header
+  the-avatar={theAvatar}
+  comic-dialog-text={comicDialogText}
+  header-title={headerTitle}
+  header-subtitle={headerSubtitle}
+></website-header>
+
+<script type="module">
+import "/src/components/web-components/website-header/website-header.ts";
+</script>
