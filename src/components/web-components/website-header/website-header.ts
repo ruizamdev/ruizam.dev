@@ -47,10 +47,12 @@ export class WebsiteHeader extends HTMLElement {
       <style>${this.getStyles()}</style>
       <header class="website-header">
         <div class="website-header__content-wrapper">
-          <img class="website-header__avatar" src="${this.theAvatarSvg}" alt="Avatar">
-          <div class="avatar__dialog-wrapper">
-            <div class="avatar__dialog">
-              <span class="dialog">${this.comicDialogText}</span>
+          <div class="website-header__avatar-wrapper">
+            <img class="website-header__avatar" src="${this.theAvatarSvg}" alt="Avatar">
+            <div class="avatar__dialog-wrapper">
+              <div class="avatar__dialog">
+                <span class="dialog">${this.comicDialogText}</span>
+              </div>
             </div>
           </div>
           <div class="website-header__titles">
@@ -92,27 +94,11 @@ export class WebsiteHeader extends HTMLElement {
         gap: 2%;
         width: 100%;
       }
-      @keyframes showDialog {
-        from {
-          opacity: 0;
-          transform: translateX(0) scale(0);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(-40px) scale(1);
-        }
-      }
 
-      @keyframes hideDialog {
-        from {
-          opacity: 1;
-          transform: translateX(-40px) scale(1);
-        }
-        to {
-          opacity: 0;
-          transform: translateX(0) scale(0);
-        }
+      .website-header__avatar-wrapper {
+        position: relative;
       }
+      
       .website-header__avatar {
         width: clamp(6rem, 10vw, 12rem);
         object-fit: cover;
@@ -121,26 +107,28 @@ export class WebsiteHeader extends HTMLElement {
       }
       .avatar__dialog-wrapper {
         position: absolute;
-        left: -90%;
-        top: -40px;
+        top: -43px;
+        left: -128px; 
         color: var(--black);
         font-family: var(--font-dialog-balloon);
         font-size: 1.4rem;
         line-height: 110%;
         text-align: center;
+        /* animacion */
         opacity: 0;
-        transform: scale(0);
-        transition: opacity 300ms, transform 300ms;
-        pointer-events: none;
+        transform: translateX(40px) scale(0);
+        transform-origin: left center;
+        transition: transform 400ms ease, opacity 400ms ease;
+        pointer-event: none;
         z-index: 1000;
       }
-      .avatar__dialog-wrapper.active {
-        animation: showDialog 400ms forwards ease-out;
+
+      .avatar__dialog-wrapper.visible {
+        opacity: 1;
+        transform: translateX(0) scale(1);
         pointer-events: auto;
       }
-      .avatar__dialog-wrapper.hide {
-        animation: hideDialog 300ms forwards ease-in;
-      }
+      
       .avatar__dialog {
         display: flex;
         align-items: center;
@@ -177,12 +165,52 @@ export class WebsiteHeader extends HTMLElement {
         font-weight: 300;
         font-style: normal;
       }
+      .website-header__avatar:hover {
+          transform: scale(1.1) rotate(360deg)
+        }
+        .inactive {
+          display: none;
+        }
+      @hover (hover: hover) {
+        
+      }
     `;
   }
 
   private attachEvents(): void {
-    
-  }
+
+    console.group('avatar dialog functions')
+
+    const avatar = this.shadow?.querySelector('.website-header__avatar');
+    console.log(avatar)
+    const dialog = this.shadow?.querySelector('.avatar__dialog-wrapper');
+    console.log(dialog)
+    if (!avatar || !dialog) return;
+    let timeoutId: number | null = null;
+    console.log(timeoutId)
+
+    const showDialog = () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+        dialog.classList.remove('visible');
+        void (dialog as HTMLElement).offsetWidth;
+      }
+      dialog.classList.add('visible');
+
+      timeoutId = window.setTimeout(() => {
+        dialog.classList.remove('visible');
+        timeoutId = null;
+      }, 3000)
+    };
+
+    avatar.addEventListener('click', () => {
+      showDialog();
+    })
+
+    setTimeout(() => {
+      showDialog()
+    }, 3000);
+  };
   
 
   private removeEvents(): void {
