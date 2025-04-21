@@ -164,6 +164,25 @@ export class WebsiteNavbar extends HTMLElement {
         transform-origin: center center;
       }
       
+      .slide-right {
+        transform: translateX(150%);
+        transition: transform 0.5s ease;
+      }
+
+      .navbar-clone {
+        display: none;
+        position: absolute;
+        right: 12px;
+        top: 20px;
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+        z-index: 2001;
+      }
+
+      .navbar-clone.visible {
+        transform: translateX(0);
+      }
+
       @media (max-width: 768px) {
         :host {
           width: 100%;

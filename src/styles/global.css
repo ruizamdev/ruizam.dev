@@ -27,6 +27,45 @@ a {
   color: inherit;
 }
 
+/* Estilos de animacion par entrar al blog */
+
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+section.slide-left {
+  width: 90px;
+  transition: width 0.5s ease;
+}
+
+.slide-right {
+  transform: translateX(150%);
+  transition: transform 0.5s ease;
+}
+
+.navbar-clone {
+  display: none;
+  position: absolute;
+  right: 12px;
+  top: 158px;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+  z-index: 2001;
+}
+
+.navbar-clone.visible {
+  transform: translateX(0);
+}
+
+.header-transition {
+  position: absolute;
+  top: 35px;
+  right: 2px;
+}
+
 @media (orientation: landscape) and (max-height: 600px) {
   body {
     position: static;

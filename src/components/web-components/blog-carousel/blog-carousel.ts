@@ -204,6 +204,12 @@ export class BlogCarousel extends HTMLElement {
       align-self: flex-start;
     }
 
+    .fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
     @media (max-width: 1920px) {
       .carousel-wrapper {
         width: 670px;
