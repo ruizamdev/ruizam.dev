@@ -50,11 +50,13 @@ export class WebsiteNavbar extends HTMLElement {
     if (oldValue !== newValue && name === 'active-index') {
       this.activeIndex = parseInt(newValue || '0', 10);
       this.render();
+      this.buttonsListeners();
     }
   }
 
   connectedCallback() {
     this.render();
+    this.buttonsListeners();
     this.checkHover();
   }
 
@@ -166,7 +168,7 @@ export class WebsiteNavbar extends HTMLElement {
       
       .slide-right {
         transform: translateX(150%);
-        transition: transform 0.5s ease;
+        transition: transform 850ms ease;
       }
 
       .navbar-clone {
@@ -221,10 +223,10 @@ export class WebsiteNavbar extends HTMLElement {
         .icon-svg {
           width: 27px;
           height: 27px;
-        }
-      }
+        };
+      };
     `; // puedes mantener esto como en original o modularizar luego
-  }
+  };
 
   private handleNavClick(index: number) {
     this.setAttribute('active-index', index.toString());
@@ -235,6 +237,18 @@ export class WebsiteNavbar extends HTMLElement {
         composed: true
       })
     );
+  }
+
+  private buttonsListeners() {
+    const blogButton = this.shadowRoot?.querySelector('.Book-open') as HTMLElement;
+      blogButton.addEventListener('click', () => {
+      this.dispatchEvent(new CustomEvent('blog-clicked', { bubbles: true, composed: true }));
+    });
+
+    const homeButton = this.shadowRoot?.querySelector('.Home') as HTMLElement;
+      homeButton.addEventListener('click', () => {
+      this.dispatchEvent(new CustomEvent('home-clicked', { bubbles: true, composed: true }));
+    });
   }
 
   private checkHover() {

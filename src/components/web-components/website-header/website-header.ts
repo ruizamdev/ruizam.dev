@@ -173,18 +173,19 @@ export class WebsiteHeader extends HTMLElement {
       }
       .avatar-transition {
         width: 50px;
+        transition: width 500ms;
       }
       .header-transition {
         position: absolute;
         top: 10px;
         right: 10px;
+        transition: all 500ms; 
       }
-      .fade-out {
-        display: none;
+      .fade-out-titles {
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
-        transition: opacity 0.5s ease, visibility 0.5s ease;
+        transition: opacity 200ms ease, visibility 200ms ease;
       } 
       @hover (hover: hover) {
         

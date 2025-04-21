@@ -204,7 +204,7 @@ export class BlogCarousel extends HTMLElement {
       align-self: flex-start;
     }
 
-    .fade-out {
+    .fade-out-carousel {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
