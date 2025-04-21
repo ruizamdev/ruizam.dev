@@ -4,52 +4,72 @@
 const navbar = document.querySelector('website-navbar');
 const header = document.querySelector('website-header');
 const blogButton = navbar?.shadowRoot?.querySelector('.Book-open');
-const homeButton = navbar?.shadowRoot?.querySelector('.Home')
-const websiteHeader = header?.shadowRoot?.querySelector('.website-header__content-wrapper')
-const websiteHeaderAvatar = header?.shadowRoot?.querySelector('.website-header__avatar')
+const websiteHeader = header?.shadowRoot?.querySelector('.website-header__content-wrapper');
+const websiteHeaderAvatar = header?.shadowRoot?.querySelector('.website-header__avatar');
 const websiteHeaderTitles = header?.shadowRoot?.querySelector('.website-header__titles') as HTMLElement;
 const mainContent = document.querySelector('blog-carousel') as HTMLElement;
 const mainSection = document.querySelector('.main-section') as HTMLElement;
 const originalNavbar = document.querySelector('website-navbar') as HTMLElement;
 
-if (originalNavbar) {
-  // Clonamos el nodo
-  const navbarClone = originalNavbar.cloneNode(true) as HTMLElement;
+let currentNavbarClone: HTMLElement | null = null;
 
-  // Le agregamos la clase
-  navbarClone.classList.add('navbar-clone');
+function waitForShadowRootAndAttach(navbarClone: HTMLElement) {
+  const tryAttach = () => {
+    const clonedHomeButton = navbarClone.shadowRoot?.querySelector('.Home');
+    if (clonedHomeButton) {
+      clonedHomeButton.addEventListener('click', () => {
+        console.log('Clon Home button click');
 
-  // Lo insertamos dentro de main-section
-  mainSection?.appendChild(navbarClone)
+        navbarClone.classList.remove('visible');
+        websiteHeaderTitles.classList.remove('fade-out');
+        mainContent.classList.remove('fade-out');
+        mainSection.classList.remove('slide-left');
+        originalNavbar.classList.remove('slide-right');
+        websiteHeaderAvatar?.classList.remove('avatar-transition');
+        header?.classList.remove('header-transition');
 
-  blogButton?.addEventListener('click', () => {
-    console.log('Blog Button Clicked!')
-    if (blogButton && websiteHeaderTitles && mainContent && mainSection && originalNavbar && navbarClone) {
-      // Paso 1: Desvanencer el header y contenido principal
-      websiteHeaderTitles.classList.add('fade-out');
-      mainContent.classList.add('fade-out');
-    
-      // Paso 2: Mover el main-section a la izquierda
-      mainSection.classList.add('slide-left');
-    
-      // Paso 3: Mover el navbar original hacia la derecha
-      originalNavbar.classList.add('slide-right');
+        void websiteHeaderTitles.offsetWidth;
+        void mainContent.offsetWidth;
 
-      setTimeout(() => {
-        navbarClone.setAttribute('style', 'display: block;');
-        websiteHeaderAvatar?.classList.add('avatar-transition');
-        websiteHeader?.classList.add('wh-transition');
-      }, 500)
-      
-      // Paso 4: Mostrar el navbar clonado después de un pequeño delay
-      setTimeout(() => {
-        navbarClone.classList.add('visible')
-      }, 500);
-    };
-  });
-
-  homeButton?.addEventListener('click', () => {
-
-  })
+        setTimeout(() => {
+          navbarClone.setAttribute('style', 'display: none;');
+        }, 500);
+      }, { once: true });
+    } else {
+      requestAnimationFrame(tryAttach);
+    }
+  };
+  tryAttach();
 }
 
+// Listener para el botón de Blog
+blogButton?.addEventListener('click', () => {
+  if (blogButton && websiteHeaderTitles && mainContent && mainSection && originalNavbar) {
+    // Eliminar el clon anterior si existe
+    if (currentNavbarClone) {
+      currentNavbarClone.remove();
+      currentNavbarClone = null;
+    }
+
+    // Crear nuevo clon limpio
+    const navbarClone = document.createElement('website-navbar') as HTMLElement;
+    navbarClone.classList.add('navbar-clone');
+    navbarClone.setAttribute('style', 'display: none;');
+    mainSection?.appendChild(navbarClone);
+    currentNavbarClone = navbarClone;
+
+    websiteHeaderTitles.classList.add('fade-out');
+    mainContent.classList.add('fade-out');
+    header?.classList.add('header-transition');
+
+    mainSection.classList.add('slide-left');
+    originalNavbar.classList.add('slide-right');
+
+    setTimeout(() => {
+      navbarClone.setAttribute('style', 'display: block;');
+      websiteHeaderAvatar?.classList.add('avatar-transition');
+      navbarClone.classList.add('visible');
+      waitForShadowRootAndAttach(navbarClone);
+    }, 500);
+  }
+});

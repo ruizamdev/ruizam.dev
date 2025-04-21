@@ -172,9 +172,9 @@ export class WebsiteHeader extends HTMLElement {
         display: none;
       }
       .avatar-transition {
-        width: 10%;
+        width: 50px;
       }
-      .wh-transition {
+      .header-transition {
         position: absolute;
         top: 10px;
         right: 10px;
@@ -210,7 +210,7 @@ export class WebsiteHeader extends HTMLElement {
       timeoutId = window.setTimeout(() => {
         dialog.classList.remove('visible');
         timeoutId = null;
-      }, 3000);
+      },5000);
     };
 
     avatar.addEventListener('click', () => {
@@ -219,7 +219,7 @@ export class WebsiteHeader extends HTMLElement {
 
     setTimeout(() => {
       showDialog();
-    }, 3000);
+    }, 1000);
   };
   
 
