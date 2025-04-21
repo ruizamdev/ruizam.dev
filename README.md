@@ -1,47 +1,97 @@
-# Astro Starter Kit: Minimal
+# 🚀 ruizam.dev
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Bienvenido al repositorio de **ruizam.dev**, el portafolio personal de Armando Ruiz. Este proyecto está construido con [Astro](https://astro.build/), TypeScript y Web Components personalizados para mostrar proyectos, artículos y recursos de desarrollo frontend.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+---
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## ✨ Características
 
-## 🚀 Project Structure
+- ⚡️ Astro para renderizado rápido y moderno
+- 🧩 Web Components personalizados (`ruizam-header`, etc.)
+- 🎨 Estilos globales y encapsulados
+- 📱 Diseño responsive y accesible
+- 📝 Blog y sección de proyectos
+- 🌙 Soporte para modo oscuro
 
-Inside of your Astro project, you'll see the following folders and files:
+---
+
+## 🚀 Instalación y uso
+
+1. Clona el repositorio:
+
+   ```bash
+   git clone https://github.com/ruizamdev/ruizam.dev.git
+   cd ruizam.dev
+   ```
+
+2. Instala las dependencias:
+
+   ```bash
+   npm install
+   ```
+
+3. Inicia el servidor de desarrollo:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Abre [http://localhost:4321](http://localhost:4321) en tu navegador.
+
+---
+
+## 📦 Estructura del proyecto
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+  components/
+    web-components/
+    wrappers/
+  layouts/
+  pages/
+  styles/
+public/
+astro.config.mjs
+tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+---
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 🧩 Componentes principales
 
-Any static assets, like images, can be placed in the `public/` directory.
+- **ruizam-header**: Encabezado personalizado con avatar y burbuja de diálogo.
+- **BlogCarousel**: Carrusel de artículos destacados.
+- **ThemeToggle**: Cambia entre modo claro y oscuro.
+- **WebsiteNavbar**: Navegación principal del sitio.
 
-## 🧞 Commands
+---
 
-All commands are run from the root of the project, from a terminal:
+## 🛠️ Alias y configuración
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Asegúrate de que los alias estén configurados en `tsconfig.json` y `astro.config.mjs`:
 
-## 👀 Want to learn more?
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+export default defineConfig({
+  alias: { '@': './src' }
+});
+```
+
+---
+
+## 📄 Licencia
+
+Apache 2.0 — Hecho con ❤️ por [@ruizamdev](https://github.com/ruizamdev)
