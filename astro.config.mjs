@@ -4,7 +4,9 @@ import path from 'node:path';
 
 // https://astro.build/config
 export default defineConfig({
-  base: '/ruizam.dev',
+  base: '/ruizam.dev/',
+  output: 'static',
+  trailingSlash: 'always',
   vite: {
     resolve: {
       alias: {

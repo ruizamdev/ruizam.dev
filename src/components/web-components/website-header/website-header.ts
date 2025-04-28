@@ -135,7 +135,7 @@ export class WebsiteHeader extends HTMLElement {
         justify-content: center;
         width: 125px;
         aspect-ratio: 1.37 / 1;
-        background-image: url("/images/dialog-balloon.svg");
+        background-image: url("/public/images/dialog-balloon.svg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;

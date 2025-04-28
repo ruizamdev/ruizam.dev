@@ -1,13 +1,15 @@
 {
   "name": "ruizam.dev",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "homepage": "https://ruizamdev.github.io/ruizam.dev",
   "license": "Apache-2.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "npm run build && npx gh-pages -d dist"
   },
   "dependencies": {
     "astro": "^5.7.4"
@@ -19,6 +21,7 @@
     "eslint": "^9.25.0",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-html": "^8.1.2",
+    "gh-pages": "^6.3.0",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3"
   }
